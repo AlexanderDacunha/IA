@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <h1 id="welcome">Welcome {{current_user.username}}!</h1>
+{% endif %}
+<h1>This is the Problemsets page!</h1>
+<div class="scroll-wrapper">
+    <button onclick="scrollMenu('prev')" class="problemsets-BTN"><</button>
+    <div class="scroll-container">
+        
+        <div class="scroll-menu">
+            
+            {% if categories %}
+                {% for category in categories %}
+                    <a href="{{url_for('problemsets_blueprint.category_page', category_name=category.name)}}" class="menu-item">{{category.name}}</a>
+                {% endfor %}
+            {% else %}
+                <p>No categories available.</p> 
+            {% endif %}
+            
+        </div>
+        
+    </div>
+    <button onclick="scrollMenu('next')" class="problemsets-BTN">></button>
+</div>
+
+
+
+
+<a id="logout" href="/logout">Logout</a>
+
+{% endblock %}

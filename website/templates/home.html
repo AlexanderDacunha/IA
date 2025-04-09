@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <h1 id="welcome">Welcome {{current_user.username}}!</h1>
+    <h1 id="role">
+        Your role is 
+        <span class="gold">{{current_user.role}}</span>
+    </h1>
+{% endif %}
+
+<div class="row">
+    <div id="jbi" class="column">
+        <h1>Jump back in!</h1>
+
+        <p>Click on a problemset to pick up where you left off!</p>
+        
+        <p>OR</p>
+        
+        <p>Click here to go to the Problemsets page!</p>
+
+        <a id="problemsetsbtnHOME" href="/problemsets">Problemsets</a>
+    </div>
+
+    <div id="problemsetViewHOME" class="column">
+        {% for item in category_progress %}
+            <a href=" {{url_for('problemsets_blueprint.category_page', category_name=item.name)}} ">
+                <p>{{item.name}} <span class="hidden" >{{item.percent}}</span> </p>
+                <div class="total">
+                    <div class="completed" id="{{loop.index}}"></div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+<a id="logout" href="/logout">Logout</a>
+
+<script>
+    let percent = document.getElementsByClassName('hidden')
+    for(let i = 1; i <= percent.length; i++){
+        div = document.getElementById(i + "")
+        div.style.width = percent[i-1].innerHTML + "%"
+    }
+</script>
+
+{% endblock %}

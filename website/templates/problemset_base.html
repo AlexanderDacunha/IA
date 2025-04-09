@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1><a href="{{url_for('problemsets_blueprint.category_page', category_name=categoryName)}}" class="problemsetName">{% block problemsetName %} {{categoryName}} {% endblock %}</a> <span class="gold">></span> {% block problemName %}{{ problem.problemName }}{% endblock %}</h1>
+
+
+
+    <div class="row">
+
+        <div class="column">
+            <div class="problemDescription">
+                <p>
+                    {% block problemDescription %}{{ problem.description }}{% endblock %}
+                </p>
+                <span class="hidden">{{problem.function}}</span>
+            </div>
+            
+            <div>
+                    <form name="code" method="POST" action="{{ url_for('problemsets_blueprint.solve_problem', problem_id=problem.id, category_name=categoryName) }}">
+                    <div class="codeEditor">
+                        <div class="Method">def this_function(): </div>
+                        <textarea oninput="autoResize()" name="CodeEditorInput" id="Editor"></textarea>
+                    </div>
+
+                    <br>
+
+                    <button type="submit" name="RunCode" id="problemBTN">Run Code</button>
+                </form>
+            </div>                
+
+        </div>
+
+        <div class="column" id="test-cases"> 
+            
+            {% for test in test_cases %}
+                Test Case {{loop.index}} for Problem {{test.Problem_ID}}
+                
+                <p>Input: {{test.input_data}}</p>
+                
+                <p>Expected Output: {{test.expected_output}}</p>
+            {% endfor %}
+            
+
+        </div>
+
+    </div>
+
+    <script>
+        var Editor = CodeMirror.fromTextArea(document.getElementById("Editor"), {
+            lineNumbers: true,           // Show line numbers
+            mode: "python",              // Set the editor's language mode to Python
+            theme: "dracula",            // Apply Dracula theme for CodeMirror
+            placeholder: "Difficulty...{{problem.difficulty}}", // Placeholder text
+            matchBrackets: true,         // Highlight matching brackets
+            autoCloseBrackets: true,     // Automatically close brackets
+            autoCloseQuotes: true,       // Automatically close single and double quotes
+            viewportMargin: Infinity,    // Number of lines rendered above and below 
+        });
+
+        function autoResize(){
+            Editor.setSize(null, Editor.getScrollInfo().height + "px");
+        }
+
+        Editor.on("change", autoResize);
+
+        autoResize();
+
+
+        let func = document.getElementsByClassName('hidden')[0].innerHTML
+        Editor.setValue("def " + func + "\n" + "  " + "\n  \n" + "  return ")
+
+    </script>
+
+{% endblock %}

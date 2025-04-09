@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <h1>Hello {{current_user.username}}!</h1>
+{% endif %}
+<h1>This is the summary page for {{username}}!</h1>
+
+
+
+<div class="Table">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Progress</th>
+            <th>Completed</th>
+        </tr>
+
+        {% for item in category_progress %}
+        <tr>
+            <td>{{ item.name }} <span class="hidden" >{{item.percent}}</span></td>
+            <td>
+                <div class="Dashboardtotal">
+                    <div class="Dashboardcompleted" id="{{loop.index}}"></div>
+                </div>
+            </td>
+            <td class="TableCompleted">
+                {% if item.percent == 100 %}
+                    <img src="{{ url_for('static', filename='CheckBox_Complete.png') }}" alt="CheckBox_Complete" class="TableIMG">
+                {% else %}
+                    <img alt="CheckBox_Incomplete" src="{{ url_for('static', filename='CheckBox_Incomplete.png') }}" class="TableIMG">
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+
+<div>
+    <h1>Problem Breakdown:</h1>
+    {% for category in categories%}
+        <h1>Category: {{category.name}}</h1>
+        {% for problem in problems %}
+            {% if problem.category_id == category.id %}
+                <li>
+                    {{problem.problemName}}
+                     -- 
+                    {% for progress in problemProgress %}
+                        {% if progress.Problem_ID == problem.id %}
+                            {% if progress.completed %}
+                                Complete
+                            {% else %}
+                                Incomplete
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if not problemProgress[loop.index-1] %}
+                        Incomplete
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</div>
+
+
+<a id="logout" href="/logout">Logout</a>
+
+<script>
+    let percent = document.getElementsByClassName('hidden')
+    for(let i = 1; i <= percent.length; i++){
+        div = document.getElementById(i + "")
+        div.style.width = percent[i-1].innerHTML + "%"
+    }
+</script>
+
+{% endblock %}

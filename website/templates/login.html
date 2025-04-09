@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Login/Sign Up{% endblock %}
+
+{% block content %}
+<div class="row">
+
+    <form method="POST" class="LOGINCol"  id="SignUpBOX">
+        <h3 id="Sign-Up">Sign Up</h3>
+        <div class="form-group sign-up">
+            <label for="email">Email Address</label>
+            <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                name="email" 
+                placeholder="Email"
+            />
+        
+            <br>
+            <br>
+        
+            <label for="username">Username</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="username" 
+                name="username" 
+                placeholder="Username"
+            />
+        
+            <br>
+            <br>
+        
+            <label for="password1">Password</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                id="password1" 
+                name="password1" 
+                placeholder="Password"
+            />
+        
+            <br>
+            <br>
+        
+            <label for="password2">Confirm Password</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                id="password2" 
+                name="password2" 
+                placeholder="Confirm Password"
+            />
+        </div>
+        <br/>
+        <button type="submit" class="btn" value="sign-up">Sign Up</button>
+    </form>
+
+
+    <form method="POST" class="LOGINCol" id="LoginBOX">
+
+        <p>Already have an account?</p>
+
+        <h3 id="Login">Login</h3>
+    
+        <div class="form-group login">
+            <label for="username">Username</label>
+            <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                placeholder="Username"
+            />
+    
+            <br>
+            <br>
+    
+            <label for="password">Password</label>
+            <input  
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Password"
+            />
+    
+        </div>
+        <br/>
+        <button type="submit" class="btn" value="login">Login</button>
+    </form>
+    
+</div>
+
+{% endblock %}

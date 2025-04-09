@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Category Page{% endblock %}
+
+{% block content %}
+
+<h1 style="display: flex; justify-content: center;">{{category.name}} Problems</h1>
+
+<a href="/problemsets/LinkedListGIF">Click here for an animated description</a>
+
+<div class="problems">
+    <table id="problems" style="border: 2px solid black;">
+        <tr id="problemHeaders">
+            <th>Problem name</th>
+            <th>Problem Description</th>
+            <th>Difficulty</th>
+        </tr>
+        {% if problems %}
+        {% for problem in problems %}
+            <tr>
+                <td style="display: flex; justify-content: center;">
+                    <a href="{{url_for('problemsets_blueprint.problem_view', problem_id=problem.id, category_name=category.name)}}" class="categorymenu-item">{{problem.problemName}}</a>
+                </td>
+                <td >
+                    {{problem.description}}
+                </td>
+                <td >
+                    {{problem.difficulty}}
+                </td>
+            </tr>   
+        {% endfor %}
+        {% else %}
+            <p>No problems available.</p> 
+        {% endif %}
+    </table>
+    
+    
+</div>
+
+<br>
+
+<a id="logout" href="/logout">Logout</a>
+
+{% endblock %}

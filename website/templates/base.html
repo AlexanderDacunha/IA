@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Home{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+
+
+    <!-- CodeMirror CSS (styling for the editor) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+
+    <!-- CodeMirror Theme CSS (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
+
+    <!-- CodeMirror JavaScript (core functionality) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+
+    <!-- Python Mode JavaScript (for Python syntax highlighting) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+
+    <!-- Additional Features for Auto-closing brackets and quotes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/closetag.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/matchbrackets.min.js"></script>
+
+    <!-- Optional Placeholder Addon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/display/placeholder.min.js"></script>
+
+</head>
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+    <div class="Title-Container">
+        <p id="Title">
+            CodingBat++
+        </p>
+
+        <div class="profile">
+            <a href="/profile" style="text-decoration: none;">
+                <img id="profile-img" src="{{ url_for('static', filename='Profile.png') }}" alt="Profile">
+                <p style="color: black;">Profile</p>
+            </a>
+            
+            
+        </div>
+
+    </div>
+    <div class="navbar">
+
+        <a class="tab home" href="/">Home</a>
+        <a class="tab" href="/dashboard">Dashboard</a>
+        <a class="tab" href="/problemsets">Problemsets</a>
+
+        {% if current_user.role == "Teacher" or "Admin" and current_user.is_authenticated and current_user.role != "Student"%}
+            <a class="tab" id="class_dashboard" href="/class-dashboard">Class Dashboard</a>
+        {% endif %}
+        
+        <div class="login-button">
+            <a href="/login">Login | Sign Up</a>
+        </div> 
+        
+    </div>
+
+    <div class="container">{% block content %}{% endblock %}</div>
+    
+    <script
+        type="text/javascript"
+        src="{{ url_for('static', filename='index.js') }}"
+    ></script>
+</body>
+</html>

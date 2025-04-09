@@ -1,0 +1,406 @@
+#Title{
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-family: 'Lato';
+}
+
+.profile{
+    margin-left: auto;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.profile p{
+    margin-top: 0;
+}
+
+#profile-img{
+    height: 50px;
+    width: 50px;
+}
+
+.Title-Container{
+    display: flex;
+}
+
+.navbar{
+    border-bottom-color: #969FAA;
+    overflow: hidden;
+    border-style: solid;
+    border-bottom-color: #969FAA;
+    border-bottom-width: 5px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    justify-content: center;
+}
+
+.navbar a{
+    float: left;
+    font-size: 17px;
+    text-decoration: none;
+    color: #47525E;
+}
+
+.tab{
+    border: 5px solid #969FAA;
+    border-bottom: 0;
+    outline-offset: 5px;
+    margin-right: 10px;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    text-align: center;
+    justify-self: center;
+}
+
+.tab:hover{
+    border-color: #7d8389;
+}
+
+.home{
+    margin-left: 25px;
+}
+
+.login-button{
+    float: right;
+    padding-top: 20px;
+}
+
+body{
+    font-family: 'Lato';
+}
+
+
+.flashes{
+    font-family: 'Lato';
+}
+
+.error{
+    background-color: red;
+    opacity: 75%;
+}
+
+.success{
+    background-color: green;
+    opacity: 75%;
+}
+
+#welcome{
+    text-align: center;
+    font-size: 50px;
+}
+
+#role{
+    text-align: center;
+}
+
+#jbi{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+#problemsetsbtnHOME{
+    padding: 5px 50px;
+    border: 3px #969FAA solid;
+    border-radius: 8px;
+    background-color: #969FAA;
+    text-decoration: none;
+}
+
+#problemsetViewHOME{
+    display: flex;
+    float: right;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #E5E9F2;
+    padding-top: 20px;
+}
+
+#problemsetViewHOME a{
+    text-decoration: none;
+    color: #FFBA5C;
+    font-size: 20px;
+    width: 35%;
+    text-align: left;
+    background-color: #5A6978;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    padding-bottom: 25px;
+    padding-left: 15%;
+    padding-right: 30%;
+}
+
+#PSVFIRST{
+    margin-top: 20px;
+}
+
+.row{
+    display: flex;
+}
+
+.column{
+    flex: 1;
+}
+
+.total{
+    width: 140%;
+    background-color: #E5E9F2;
+    height: 5px;
+}
+
+.completed{
+    width: 40%;
+    background-color: #8190A5;
+    height: 5px;
+}
+
+.gold{
+    color: #FFBA5C;
+}
+
+.LOGINCol{
+    display: flex;
+    width: 50%;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+#LoginBOX{
+    background-color: #E5E9F2;
+}
+
+#Login{
+    font-size: 30px;
+}
+
+#Sign-Up{
+    font-size: 30px;
+}
+
+.btn{
+    background-color: #47525E;
+    color: white;
+    padding: 15px 70px;
+    border-radius: 4px;
+}
+
+#LoginBOX input{
+    padding: 10px 10px;
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+#SignUpBOX input{
+    padding: 10px;
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+.form-group{
+    display: block;
+}
+
+.placeholder{
+    background-color: #E5E9F2;
+    width: 50%;
+    flex-wrap: nowrap;
+    float: right;
+}
+
+.Table table{
+    width: 100%;
+}
+
+.Table th{
+    background-color: #EFF2F7;
+}
+
+#classCodeBTN{
+    width: 20%;
+    height: 21px;
+    background-color: #5A6978;
+    border: none;
+    color: #FFBA5C;
+    margin-left: 5px;
+}
+
+#classCodeBTN:hover{
+    background-color: #6d7f92;
+    cursor: pointer;
+}
+
+#problemBTN:hover{
+    cursor: pointer;
+}
+
+.classCode{
+    margin-top: 50px;
+}
+
+.Dashboardtotal{
+    width: 100%;
+    background-color: #E5E9F2;
+    height: 5px;
+    overflow: hidden;
+}
+
+.Dashboardcompleted{
+    background-color: #8190A5;
+    height: 5px;
+}
+
+tr:nth-child(odd) {
+    background-color: #F9FAFC;
+}
+
+.TableCompleted{
+text-align: center;
+justify-content: center;
+}
+
+.TableIMG{
+width: 25px;
+height: 25px;
+}
+
+.problemDescription{
+text-align: left;
+}
+
+.codeEditor{
+    width: 100%;
+    min-height: 250px;
+    height: fit-content;
+    border: 2px solid #5A6978 ;
+}
+
+.codeTXT{
+    width: 98%;
+    border: none;
+    text-decoration: none;
+}
+
+#Editor{
+    display: block;
+    height: auto;
+    border: 1px black solid;
+    overflow: hidden;
+    resize: none;
+    margin-left: 2%;
+    width: 95%;
+}
+
+.Method{
+    margin-left: 1%;
+}
+
+.scroll-container {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    gap: 10px;
+    scroll-behavior: smooth;
+    height: fit-content;
+}
+
+.scroll-menu{
+    display: flex;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scroll-menu::-webkit-scrollbar{
+    background: transparent;
+}
+
+.menu-item {
+    text-decoration: none;
+    margin: 10px 20px;
+    flex: 0 0 calc(100% - 10px);
+    text-align: center;
+    height: 300px;
+    border: 1px solid #5A6978;
+    border-radius: 5px;
+    color: #FFBA5C;
+    font-size: 17px;
+}
+
+.scroll-wrapper {
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    justify-content: center; 
+}
+
+.CodeMirror {
+    font-family: monospace;
+    height: auto;
+    width: 98%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    direction: ltr;
+}
+
+.hidden{
+    display: none;
+}
+
+.problemsetName{
+    text-decoration: none;
+    color: inherit;
+}
+
+#test-cases{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+#problems{
+    width: 100%;
+}
+
+#problemHeaders{
+    font-size: 25px;
+    background-color: #5A6978;
+    color: #FFBA5C;
+}
+
+.problemsets-BTN{
+    height: 150px;
+}
+
+#LinkedListGIF {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding-top: 10%;
+}
+
+.W3LinkedListDescription {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.backToProblems {
+    text-decoration: none;
+    font-size: 25px;
+}

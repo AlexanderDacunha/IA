@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <h1>Hello {{current_user.username}}!</h1>
+    <h1>Your role is {{current_user.role}}</h1>
+{% endif %}
+<h1>This is the class dashboard page!</h1>
+
+<div class="form-group">
+    <form method="POST" id="problemCreator" >
+            <input 
+                type="text" 
+                class="form-control" 
+                id="problemName" 
+                name="problemName" 
+                placeholder="problemName"
+            />
+            
+            <br>
+
+
+            <input
+            type="text"
+            class="form-control"
+            name="function"
+            placeholder="Starter function for Problem"
+            />
+
+            <br>
+
+            <input
+                type="text"
+                class="form-control"
+                id="problemDescription"
+                name="problemDescription"
+                placeholder="problemDescription"
+            />
+
+            <br>
+
+            <input
+                type="text"
+                class="form-control"
+                id="problemDifficulty"
+                name="problemDifficulty"
+                placeholder="problemDifficulty"
+            />
+
+            <br>
+
+            <select name="category_id" id="category">
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+
+            <br>
+
+            <button type="submit" class="" value="createProblem" name="action">Create Problem</button>
+    </form>
+</div>
+
+<br>
+<br>
+<br>
+
+<div>
+    <form method="POST" id="problemDeleter">
+        <input
+            type="number"
+            class="form-control"
+            name="problemToDelete"
+            placeholder="Problem ID to Delete"
+        />
+
+        <button type="submit" value="deleteProblem" name="action">Delete Problem</button>
+    </form>
+</div>
+
+<br>
+
+<div>
+    <form method="POST" id="addTestCase">
+        <input
+            type="text"
+            class="form-control"
+            name="problem_id"
+            placeholder="Problem ID for Test Case"
+        />
+
+        <input
+            type="text"
+            class="form-control"
+            name="input_data"
+            placeholder="Input Data for Test Case"
+        />
+
+        <input
+            type="text"
+            class="form-control"
+            name="expected_output"
+            placeholder="Expected Output for Test Case"
+        />
+
+        <button type="submit" value="createTestCase" name="action">Create Test Case</button>
+    </form>
+</div>
+
+<br>
+<br>
+
+<div>
+    <form method="POST">
+        <button type="submit" value="populateCategoryDB" name="action">Populate Category DB</button>
+    </form>
+</div>
+
+<br>
+
+<div>
+    <form method="POST">
+        <select name="classroomID" id="classroomSelection">
+            {% for class in classroom %}
+                <option value="{{class.id}}">{{class.name}}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" value="classroomSelection" name="action">Find Class</button>
+    </form>
+</div>
+
+{% if selected_classroom %}
+    <h1>Classroom: {{selected_classroom.name}}</h1>
+    <h3>Students: </h3>
+    {% for student in students %}
+        {% if student.class_id == selected_classroom.id %}
+            <li><a href="{{url_for('views.summary', username=student.username)}}">{{student.username}}</a></li>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<br> 
+
+<a id="logout" href="/logout">Logout</a>
+
+{% endblock %}

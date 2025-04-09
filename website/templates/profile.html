@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <h1 id="welcome">Welcome {{current_user.username}}!</h1>
+    <h1>Your role is {{current_user.role}}</h1>
+{% endif %}
+<h1>This is the profile page!</h1>
+
+<br>
+
+<h1>Username: {{current_user.username}}</h1>
+<h1>Email: {{current_user.email}}</h1>
+
+
+
+
+
+<a id="logout" href="/logout">Logout</a>
+
+{% endblock %}
