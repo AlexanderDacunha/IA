@@ -3,10 +3,10 @@
 
 {% block content %}
 
-<a class="backToProblems" href="/problemsets">Back to Problem Page</a>
+<a class="backToProblems" href="/problemsets/{{categoryName}}"><- Back to Problem Page</a>
 
 <div id="LinkedListGIF">
-    <img  src="{{ url_for('static', filename='{{categoryName}}GIF.gif') }}" alt="Linked List GIF">
+    <img  src="{{ url_for('static', filename=filename) }}" alt="Linked List GIF">
 </div>
 
 <br>

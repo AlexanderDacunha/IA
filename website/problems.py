@@ -112,9 +112,9 @@ def solve_problem(problem_id, category_name):
     return redirect(url_for('problemsets_blueprint.problem_view', problem_id=problem.id, category_name=category_name))
     #return render_template("solving.html", problem_id=problem.id, category_name=category_name, test_cases=test_cases, userCode=userCode)
 
-@problems.route("/<category_name>GIF")
+@problems.route("/<categoryName>GIF")
 @login_required
-def categoryNameGIF():
-   
-
-    return render_template("LinkedListDesc.html")
+def categoryNameGIF(categoryName):
+    categoryName = "Linked List"
+    filename = categoryName.replace(" ", "") + "GIF.gif"
+    return render_template("LinkedListDesc.html", categoryName=categoryName, filename=filename)
