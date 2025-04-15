@@ -11,6 +11,10 @@
         <div class="column">
             <div class="problemDescription">
                 <p>
+                    Progress - {% if progress.completed %} Completed {% else %}  In Progress {% endif%}
+                </p>
+
+                <p>
                     {% block problemDescription %}{{ problem.description }}{% endblock %}
                 </p>
                 <span class="hidden">{{problem.function}}</span>

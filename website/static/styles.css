@@ -404,3 +404,20 @@ text-align: left;
     text-decoration: none;
     font-size: 25px;
 }
+
+.form-group input{
+    padding: 10px;
+    width: 50%;
+    padding-bottom: 15px;
+}
+
+.form-group button{
+    width: 20%;
+    height: 10%;
+}
+
+#classroomSelection{
+    padding: 10px;
+    width: 25%;
+    font-size: 105%;
+}

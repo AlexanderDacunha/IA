@@ -57,7 +57,7 @@ def problem_view(problem_id, category_name):
         
 
     # Renders the template for the problem page, dynamically passing through the problem's details.
-    return render_template('problemset_base.html', problem=problem, categoryName=category.name, test_cases=test_cases)
+    return render_template('problemset_base.html', problem=problem, categoryName=category.name, test_cases=test_cases, progress=progress)
 
 
 
@@ -88,15 +88,15 @@ def solve_problem(problem_id, category_name):
             
             if return_this:
                 if not (int(return_this) == int(testCaseOutput[i])):
-                    flash(f'Failed Test {i+1}, Expected Output : {testCaseOutput[i]} You returned : {return_this}', 'error')
+                    flash(f'Failed Test {i+1}, Expected Output: {testCaseOutput[i]} You returned: {return_this}', 'error')
                     passed = False
                 else:
                     flash(f'Passed Test {i+1}', 'success')
             else:
-                flash(f'Failed Test {i+1}, Expected Output : {testCaseOutput[i]} You returned : {return_this}', 'error')
+                flash(f'Failed Test {i+1}, Expected Output: {testCaseOutput[i]} You returned: {return_this}', 'error')
                 passed = False
         except Exception as e:
-            flash(f'{e}...What did you even write, Expected Output : {testCaseOutput[i]}', 'error')
+            flash(f'{e}...What did you even write, Expected Output: {testCaseOutput[i]}', 'error')
             passed = False
 
 
