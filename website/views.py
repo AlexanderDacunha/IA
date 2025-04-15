@@ -133,6 +133,7 @@ def class_dashboard():
         #print(newProblem.problemName)
         db.session.add(newProblem)
         db.session.commit()
+        flash('Problem Successfully Created', 'success')
 
         problem = Problems.query.filter_by(problemName=problemName).first()
         newProgress = Progress(User_ID=current_user.id, Problem_ID=problem.id)
@@ -165,6 +166,8 @@ def class_dashboard():
 
         if problem and progress:
             db.session.commit()
+            flash('Problem Successfully Deleted', 'success')
+
 
         return redirect(url_for("views.class_dashboard"))
     
@@ -177,6 +180,7 @@ def class_dashboard():
 
         db.session.add(newTestCase)
         db.session.commit()
+        flash('New Test Case Successfully Created', 'success')
 
         return redirect(url_for('views.class_dashboard'))
     
@@ -195,7 +199,7 @@ def class_dashboard():
         selected_classroom = Classroom.query.get(selection)
 
 
-    return render_template('class_dashboard.html', categories=ProblemCategory.query.all(), classroom=classroom, students=students, selected_classroom=selected_classroom)
+    return render_template('class_dashboard.html', categories=ProblemCategory.query.all(), problems=Problems.query.all(), classroom=classroom, students=students, selected_classroom=selected_classroom)
 
 @views.route('/profile')
 @login_required

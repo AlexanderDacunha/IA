@@ -68,13 +68,11 @@
 
 <div class="form-group">
     <form method="POST" id="problemDeleter">
-        <input
-            type="number"
-            class="form-control"
-            name="problemToDelete"
-            placeholder="Problem ID to Delete"
-            id="problemIDToDelete"
-        />
+        <select name="problemToDelete" id="problemToDelete">
+            {% for problem in problems %}
+                <option value="{{problem.id}}">{{problem.problemName}}</option>
+            {% endfor %}
+        </select>
         <br>
         <button type="submit" value="deleteProblem" name="action" onclick="userConfirmation()">Delete Problem</button>
     </form>
@@ -84,13 +82,12 @@
 
 <div class="form-group">
     <form method="POST" id="addTestCase">
-        <input
-            type="text"
-            class="form-control"
-            name="problem_id"
-            placeholder="Problem ID for Test Case"
-        />
-
+        <select name="problem_id" id="problemIDforTestCase">
+            {% for problem in problems %}
+                <option value="{{problem.id}}">{{problem.problemName}}</option>
+            {% endfor %}
+        </select>
+        <br>
         <input
             type="text"
             class="form-control"
