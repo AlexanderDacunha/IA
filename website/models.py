@@ -41,7 +41,7 @@ class Problems(db.Model):
     difficulty = db.Column(db.String(80), nullable=False)
 
     users = db.relationship('User', secondary='user_progress', back_populates='problems', lazy='dynamic')
-    user_progress = db.relationship('Progress', back_populates='problem', lazy='dynamic')
+    user_progress = db.relationship('Progress', back_populates='problem', lazy='dynamic', cascade="all, delete-orphan")
 
     category_id = db.Column(db.Integer, db.ForeignKey('problem_categories.id'), nullable=False)
     category = db.relationship('ProblemCategory', backref=db.backref('problem_set', lazy=True), overlaps='problems')  

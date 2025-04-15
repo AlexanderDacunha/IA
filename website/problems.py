@@ -5,12 +5,12 @@ from .models import Problems, Progress, ProblemCategory, TestCases
 from . import db
 import datetime
 
-problems = Blueprint('problems', __name__)
+problems = Blueprint('problems', __name__) 
 
 @problems.route("/<category_name>")
 @login_required
 def category_page(category_name):
-    # Find the category by name, ignoring if the name is uppercase or lowercase.
+    # Find the category by name, using .ilike to ignore if the name is uppercase or lowercase.
     category = ProblemCategory.query.filter(ProblemCategory.name.ilike(category_name)).first_or_404()
 
     # Get all problems under this category.
@@ -66,6 +66,7 @@ def problem_view(problem_id, category_name):
 def solve_problem(problem_id, category_name):
     problem = Problems.query.get_or_404(problem_id)
     test_cases = TestCases.query.filter_by(Problem_ID=problem_id).all()
+    progress = Progress.query.filter_by(User_ID=current_user.id, Problem_ID=problem.id).first()
 
     testCaseInput = []
     testCaseOutput = []
@@ -102,10 +103,11 @@ def solve_problem(problem_id, category_name):
 
     if passed and len(testCaseInput) > 0:
         flash(f'You Completed this Problem', 'success')
+        progress.completed = True
+        db.session.commit()
 
     else:
         flash("keep working on it", 'error')
-
 
     #print(userCode)
 

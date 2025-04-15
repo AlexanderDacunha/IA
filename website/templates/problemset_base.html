@@ -2,9 +2,7 @@
 
 
 {% block content %}
-    <h1><a href="{{url_for('problemsets_blueprint.category_page', category_name=categoryName)}}" class="problemsetName">{% block problemsetName %} {{categoryName}} {% endblock %}</a> <span class="gold">></span> {% block problemName %}{{ problem.problemName }}{% endblock %}</h1>
-
-
+    <h1><a href="{{url_for('problemsets_blueprint.category_page', category_name=categoryName)}}" class="problemsetName">{% block problemsetName %} <span id="catName">{{categoryName}}</span> {% endblock %}</a> <span class="gold">></span> {% block problemName %}{{ problem.problemName }}{% endblock %}</h1>
 
     <div class="row">
 
@@ -69,11 +67,27 @@
         Editor.on("change", autoResize);
 
         autoResize();
-
+        
+        let categoryName = document.getElementById("catName").innerHTML
+        console.log(categoryName)
 
         let func = document.getElementsByClassName('hidden')[0].innerHTML
-        Editor.setValue("def " + func + "\n" + "  " + "\n  \n" + "  return ")
 
+        if(categoryName === "Linked List"){
+            Editor.setValue("class Node: \n  def __init__(self, data): \n    self.data = data \n    self.next = None\n\n\nnode1 = Node(1)\nnode2 = Node(2)\nnode3 = Node(3)\nnode4 = Node(4)\n\nnode1.next = node2\nnode2.next = node3\nnode3.next = node4\n" + "\ndef " + func + "\n" + "  " + "\n  \n" + "  return ")
+        }
+        else if(categoryName === "Queue"){
+            Editor.setValue("class Queue: \n  def __init__(self):\n    self.queue = []\n\n  def enqueue(self, element):\n    self.queue.append(element)\n\n  def dequeue(self):\n    if self.isEmpty():\n      return 'Queue is Empty'\n    return self.queue.pop()\n\n  def peek(self):\n    if self.isEmpty():\n      return 'Queue is Empty' \n    return self.queue[0]\n\n  def isEmpty(self):\n    return len(self.queue) == 0\n\n  def size(self):\n    return len(self.queue)\n\nmyQueue = Queue()\n\nmyQueue.enqueue(1)\nmyQueue.enqueue(2)\nmyQueue.enqueue(3)\n"  + "\ndef " + func + "\n" + "  " + "\n  \n" + "  return ")
+        }
+        else if(categoryName === "Tree"){
+            Editor.setValue("class TreeNode: \n  def __init__(self, data):\n    self.data = data\n    self.right = None\n    self.left = None\n\nroot = TreeNode(1)\nnodeA = TreeNode(2)\nnodeB = TreeNode(5)\nnodeC = TreeNode(3)\nnodeD = TreeNode(4)\nnodeE = TreeNode(6)\nnodeF = TreeNode(7)\nnodeG = TreeNode(8)\n\nroot.left = nodeA\nroot.right = nodeB\n\nnodeA.left = nodeC\nnodeA.right = nodeD\n\nnodeB.left = nodeE\nnodeB.right = nodeF\n\nnodeF.left = nodeG\n" + "\ndef " + func + "\n" + "  " + "\n  \n" + "  return ")
+        }
+        else if(categoryName === "Stack"){
+            Editor.setValue("class Stack: \n  def __init__(self):\n    self.stack = []\n\n  def push(self, element):\n    self.stack.append(element)\n\n  def pop(self):\n    if self.isEmpty():\n      return 'Stack is Empty'\n    return self.stack.pop()\n\n  def peek(self):\n    if self.isEmpty():\n      return 'Stack is Empty' \n    return self.stack[-1]\n\n  def isEmpty(self):\n    return len(self.stack) == 0\n\n  def size(self):\n    return len(self.stack)\n\nmyStack = Stack()\n\nmyStack.push(1)\nmyStack.push(2)\nmyStack.push(3)\n"  + "\ndef " + func + "\n" + "  " + "\n  \n" + "  return ")
+        }
+        
+
+                
     </script>
 
 {% endblock %}
