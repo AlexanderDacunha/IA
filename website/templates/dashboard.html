@@ -48,17 +48,43 @@
                     name="classCode" 
                     placeholder=""
                 />
-                <button type="submit" value="joinClass" id="classCodeBTN" name="action" >Join Class</button>
+                <button type="submit" value="joinClass" class="classCodeBTN" name="action" >Join Class</button>
             </form>
+            <br>
             <form method="POST">
-                <button type="submit" value="leaveClass" name="action">Leave Class</button>   
+                <button type="submit" value="leaveClass" class="classCodeBTN" name="action">Leave Class</button>   
             </form>
             
         </div>
     </div>
 
     <div class="column placeholder">
-        <h1>{{user_classroom.name}}</h1>
+        <h1>{% if user_classroom.name %} You are currently in {{user_classroom.name}} {% else %} You are not currently in a class {% endif %}</h1>
+        <h1>Problem Breakdown:</h1>
+        {% for category in categories%}
+            <h2>Category: {{category.name}}</h2>
+            {% for problem in problems %}
+                {% if problem.category_id == category.id %}
+                    <li>
+                        {{problem.problemName}}
+                        -- 
+                        {% for progress in problemProgress %}
+                            {% if progress.Problem_ID == problem.id %}
+                                {% if progress.completed %}
+                                    Complete
+                                {% else %}
+                                    Incomplete
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if not problemProgress[loop.index-1] %}
+                            Incomplete
+                        {% endif %}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
     </div>
 
 </div>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Category Desctiptions Page{% endblock %}
+
+{% block content %}
+
+<a class="backToProblems" href="/problemsets"><- Back to Problem Page</a>
+
+{% for file in filenames %}
+    <div class="categoryDesc">
+        <img  src="{{ url_for('static', filename=file ) }}" alt={{file}}>
+    </div>
+{% endfor %}
+
+<br>
+
+<span class="W3LinkedListDescription">W3 Schools Data Structures Page: </span> <a class="W3LinkedListDescription" href="https://www.w3schools.com/dsa/dsa_theory_linkedlists.php">More Information</a>
+
+<br>
+
+<a id="logout" href="/logout">Logout</a>
+
+{% endblock %}

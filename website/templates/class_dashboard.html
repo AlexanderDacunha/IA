@@ -50,6 +50,7 @@
 
             <br>
 
+            <label for="category_id">Categories: </label>
             <select name="category_id" id="category">
                 {% for category in categories %}
                     <option value="{{ category.id }}">{{ category.name }}</option>
@@ -68,6 +69,7 @@
 
 <div class="form-group">
     <form method="POST" id="problemDeleter">
+        <label for="problemToDelete">Problem Name: </label>
         <select name="problemToDelete" id="problemToDelete">
             {% for problem in problems %}
                 <option value="{{problem.id}}">{{problem.problemName}}</option>
@@ -82,6 +84,7 @@
 
 <div class="form-group">
     <form method="POST" id="addTestCase">
+        <label for="problem_id">Problem Name: </label>
         <select name="problem_id" id="problemIDforTestCase">
             {% for problem in problems %}
                 <option value="{{problem.id}}">{{problem.problemName}}</option>

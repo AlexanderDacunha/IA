@@ -27,22 +27,39 @@
 
                     <br>
 
-                    <button type="submit" name="RunCode" id="problemBTN">Run Code</button>
+                    <button type="submit" name="RunCode" id="problemBTN">Run Code</button> <br> <span class="important">*(Make sure to copy your code before submitting since submitting wipes the IDE to its default state)</span>
                 </form>
             </div>                
 
         </div>
 
-        <div class="column" id="test-cases"> 
-            
-            {% for test in test_cases %}
-                Test Case {{loop.index}} for Problem {{test.Problem_ID}}
-                
-                <p>Input: {{test.input_data}}</p>
-                
-                <p>Expected Output: {{test.expected_output}}</p>
-            {% endfor %}
-            
+        <div class="column" id="test-cases">       
+            <table id="testCaseTable">
+                <caption style="font-size: 150%;">Test Cases</caption>
+                <tr>
+                    <th>#</th>
+                    <th>Input</th>
+                    <th>User Output</th>
+                    <th>Expected Output</th>   
+                </tr>
+
+                {% for test in test_cases %}
+                    <tr>
+                        
+                        <td>{{loop.index}}</td>
+                        <td>{{test.input_data}}</td>
+                            {% if userOutput %}
+                                <td>{{userOutput[loop.index-1]}}</td>
+
+                            {% else %} <td>userOutput</td>
+                            {% endif %}
+                        <td>{{test.expected_output}}</td>
+                        
+                    </tr>
+                {% endfor %}
+
+            </table>
+
 
         </div>
 
@@ -53,11 +70,11 @@
             lineNumbers: true,           // Show line numbers
             mode: "python",              // Set the editor's language mode to Python
             theme: "dracula",            // Apply Dracula theme for CodeMirror
-            placeholder: "Difficulty...{{problem.difficulty}}", // Placeholder text
+            placeholder: "Difficulty...{{problem.difficulty}}", // Placeholder text 
             matchBrackets: true,         // Highlight matching brackets
             autoCloseBrackets: true,     // Automatically close brackets
             autoCloseQuotes: true,       // Automatically close single and double quotes
-            viewportMargin: Infinity,    // Number of lines rendered above and below 
+            viewportMargin: Infinity,    // Number of lines rendered above and below (Allows for autoResize to work)
         });
 
         function autoResize(){

@@ -227,7 +227,7 @@ body{
     background-color: #EFF2F7;
 }
 
-#classCodeBTN{
+.classCodeBTN{
     width: 20%;
     height: 21px;
     background-color: #5A6978;
@@ -385,13 +385,6 @@ text-align: left;
     height: 150px;
 }
 
-#LinkedListGIF {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    padding-top: 10%;
-}
-
 .W3LinkedListDescription {
     display: flex;
     align-content: center;
@@ -427,4 +420,16 @@ text-align: left;
     padding: 10px;
     width: 25%;
     font-size: 105%;
+}
+
+.categoryDesc{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding-top: 10%;
+}
+
+#testCaseTable{
+    width: 150%;
+    align-self: flex-start;
 }
