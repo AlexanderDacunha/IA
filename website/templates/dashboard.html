@@ -61,6 +61,7 @@
     <div class="column placeholder">
         <h1>{% if user_classroom.name %} You are currently in {{user_classroom.name}} {% else %} You are not currently in a class {% endif %}</h1>
         <h1>Problem Breakdown:</h1>
+        <h3>(If blank then you have not started the problem)</h3>
         {% for category in categories%}
             <h2>Category: {{category.name}}</h2>
             {% for problem in problems %}
@@ -77,10 +78,7 @@
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
-
-                        {% if not problemProgress[loop.index-1] %}
-                            Incomplete
-                        {% endif %}
+                        
                     </li>
                 {% endif %}
             {% endfor %}

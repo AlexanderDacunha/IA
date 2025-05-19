@@ -65,6 +65,10 @@
         {% if current_user.role == "Teacher" or "Admin" and current_user.is_authenticated and current_user.role != "Student"%}
             <a class="tab" id="class_dashboard" href="/class-dashboard">Class Dashboard</a>
         {% endif %}
+
+        {% if current_user.role == "Admin" and current_user.is_authenticated and current_user.role != "Student"%}
+            <a class="tab" id="admin_panel" href="/admin/">Admin Panel</a>
+        {% endif %}
         
         <div class="login-button">
             <a href="/login">Login | Sign Up</a>

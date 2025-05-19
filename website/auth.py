@@ -52,7 +52,7 @@ def login():
             flash('Passwords Must Match', 'error')
         
         else:
-            new_user = User(email=email, username=username, password=generate_password_hash(password, method='pbkdf2:sha256'), role="Admin")
+            new_user = User(email=email, username=username, password=generate_password_hash(password, method='pbkdf2:sha256'), role="Student")
             
             db.session.add(new_user)
             db.session.commit()

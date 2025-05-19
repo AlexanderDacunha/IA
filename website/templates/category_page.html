@@ -16,9 +16,12 @@
         </tr>
         {% if problems %}
         {% for problem in problems %}
+            {% set completed = False%}
             <tr>
                 <td style="display: flex; justify-content: center;">
-                    <a href="{{url_for('problemsets_blueprint.problem_view', problem_id=problem.id, category_name=category.name)}}" class="categorymenu-item">{{problem.problemName}}</a>
+                    
+                    <a href="{{url_for('problemsets_blueprint.problem_view', problem_id=problem.id, category_name=category.name)}}" class="categorymenu-item" style="color: {% for prog in progress%} {% if prog.Problem_ID == problem.id and prog.completed %}green{% else %}{% endif %}{% endfor %};">{{problem.problemName}}</a> 
+                      
                 </td>
                 <td >
                     {{problem.description}}

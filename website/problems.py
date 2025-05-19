@@ -15,7 +15,7 @@ def category_page(category_name):
     # Get all problems under this category.
     problems = Problems.query.filter_by(category_id=category.id).all()
 
-    return render_template('category_page.html', category=category, problems=problems)
+    return render_template('category_page.html', category=category, problems=problems, progress=Progress.query.filter_by(User_ID=current_user.id))
 
 
 # Defines a route that dynamically captures an integer 'problem_id' from the URL.
